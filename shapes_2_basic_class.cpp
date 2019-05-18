@@ -1,3 +1,15 @@
+/**
+ * Shapes program Version 2
+ * @source - example project from module "PTI651 Fortgeschrittene Konzepte der Progr. mit C/C++"
+ * at FH-Zwickau University (https://github.com/whzcpp2019/cpp/wiki/Shapes).
+ * at FH-Zwickau University
+ * In this cpp program are defined  Point, Circle, Line classes
+ * and their Basic class Shape, that has draw and move methods.
+ * Child classes override these methods, but they aren't functioning in this
+ * version of program. It has to be improved to be able to override methods
+ * in the next version of the program
+ */
+
 #include <iostream>
 
 class Shape{
