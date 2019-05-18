@@ -1,3 +1,11 @@
+/**
+ * Shapes Version 1
+ * @source - example project from module "PTI651 Fortgeschrittene Konzepte der Progr. mit C/C++"
+ * at FH-Zwickau University (https://github.com/whzcpp2019/cpp/wiki/Shapes).
+ * In this cpp program are defined  Point and Circle classes
+ * with their plain methods
+ */
+
 #include <iostream>
 
 class Point {
