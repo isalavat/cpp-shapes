@@ -1,7 +1,20 @@
+/**
+ * Shapes program Version 5-6.
+ * @source - example project from module "PTI651 Fortgeschrittene Konzepte der Progr. mit C/C++"
+ * at FH-Zwickau University (https://github.com/whzcpp2019/cpp/wiki/Shapes).
+ * In this cpp program are defined  Point, Circle, Line classes
+ * and their Basic class Shape, that has draw and move methods.
+ * Child classes override these methods. In these version of the program
+ * the inheritance functions correctly by using virtual methods and destructor.
+ * This program reads several parameters from console to create
+ * appropriate instance of the shape (Line or Circle). In this version of
+ * the shapes program there is create_shape() method, that is responsible
+ * for creating shapes. This method creates and retuns unique pointer of the created
+ * shape object to avoid the problem with inheritance and memory (call stack and heap meories).
+ */
+
 #include <iostream>
 #include <memory>
-#include <vector>
-
 using  namespace std;
 class Shape{
 public:
@@ -91,6 +104,18 @@ private:
 
 };
 
+/**
+ * Creates appropriate shape based on given shape_type parameter
+ * l - Line
+ * c - Circle
+ * throws an error if given parameter not correct
+ *
+ *  the created shape object will be returned as a unique pointer, that allows us
+ *  to persist the objects in heap and to manage their lifecycle.
+ *  Using of unique pointer solves the problem of the incorrect memory access.
+ *  Read about call stack vs heap!
+ *
+ */
 unique_ptr<Shape> create_shape (const char shape_type) {
     switch(tolower(shape_type)) {
         case 'l':{
@@ -119,13 +144,11 @@ unique_ptr<Shape> create_shape (const char shape_type) {
 }
 
 int main() {
-    vector<unique_ptr<Shape>> shapes;
     cout << "Command line for creating a single shape:\n\t"
             "- Create line with: 'l start_x start_y end_x end_y'\n\t"
             "- Create circle with: 'c centre_x centre_y radius'\n\t"
             "- Abort: x"
          << endl;
-
     char shape_type;
 
     while(cin>>shape_type){
@@ -134,10 +157,6 @@ int main() {
         }
 
         unique_ptr<Shape> s = create_shape(shape_type);
-        shapes.push_back(move(s));
-    }
-
-    for(const auto &s: shapes) {
         s->draw();
     }
 
